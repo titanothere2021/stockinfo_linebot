@@ -3,6 +3,8 @@ import json
 import pandas as pd
 from LineNotify import lineNotifyMessage
 import datetime
+import schedule
+import time
 
 headers = {
     'content-type': 'text/html; charset=UTF-8',
@@ -152,4 +154,10 @@ def yieldData(begin=None, rank=None):   #日期格式:西元年月日
 
 
 # -------------  每日殖利率9.8%以上 -------------------
-yieldData('20210813')
+
+#schedule.every().day.at("10:00").do(yieldData)
+schedule.every(60).seconds.do(yieldData)
+
+while True:
+    schedule.run_pending()
+    time.sleep(1) # wait one minute
