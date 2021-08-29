@@ -155,8 +155,8 @@ def yieldData(begin=None, rank=None):   #日期格式:西元年月日
 
 # -------------  每日殖利率9.8%以上 -------------------
 
-#schedule.every().day.at("10:00").do(yieldData)
-schedule.every(60).seconds.do(yieldData)
+schedule.every().day.at("10:00").do(yieldData)
+#schedule.every(60).seconds.do(yieldData)
 
 while True:
     schedule.run_pending()
